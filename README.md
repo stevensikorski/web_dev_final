@@ -6,8 +6,6 @@
 - **Update**: Increment the counter value.
 - **Delete**: Remove your counter document.
 
----
-
 ## Data Being Modified
 
 Each user's counter is stored in Firestore under the `counters` collection, with the document ID matching their Firebase UID. Each document contains a single field:
