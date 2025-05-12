@@ -1,12 +1,22 @@
-# React + Vite
+## Usage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **Authenticate**: Sign in with Google to authenticate.
+- **Create**: Initialize your personal counter.
+- **Read**: Read the counter value.
+- **Update**: Increment the counter value.
+- **Delete**: Remove your counter document.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Data Being Modified
 
-## Expanding the ESLint configuration
+Each user's counter is stored in Firestore under the `counters` collection, with the document ID matching their Firebase UID. Each document contains a single field:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `value` (number): the current count for that user.
+
+When a user interacts with the app, the following happens:
+
+- **Create**: a new document is created with `value: 0`.
+- **Read**: the users document is read to display the counter value.
+- **Update**: the existing document's `value` is incremented by 1.
+- **Delete**: the user's document is removed from Firestore.
